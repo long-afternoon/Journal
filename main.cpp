@@ -144,6 +144,26 @@ void showTime() {
     cout << tm.hour12 << ":" << tm.min << " " << day << ", " << mon << " " << tm.day << endl;
 }
 
+void trackLogs() {
+
+}
+
+void findByDay(int day) {
+
+}
+
+void findByMon(int mon) {
+
+}
+
+void findByYear(int year) {
+
+}
+
+void findByTime(int time) {
+
+}
+
 int main() {
 
     srand(time(0));
@@ -151,21 +171,55 @@ int main() {
     showTime();
 
     string ftype = ".json";
-    string fname;
+    string fname = "journal";
     string userThought;
 
-    cout << "filename:";
-    cin >> fname;
-    cin.get();  //getline has some weird issues T_T 
+    cout << "\n0.exit\n1.write a thought\n2.read previous thought\n?:";
+    int choice;
 
+    bool run = true;
+    while(run) {
+        cin >> choice;
 
-    while(true) {
+        if(choice == 0) run = false;
+        if(choice == 1) {
+            cout << getHint() << endl << ":";
+            getline(cin, userThought);
 
-        cout << getHint() << endl << ":";
-        getline(cin, userThought);
-        
-        string file_name = "files\\" + fname + ftype;
-        feelingBox( file_name, userThought);
+            string file_name = "files\\" + fname + ftype;
+            feelingBox( file_name, userThought);
+        }
+        if(choice == 2) {
+            cout << "0.back\n1.Day\n2.Month\n3.Year\n4.Time\n?:";
+            cin >> choice;
+
+            switch(choice) {
+                case 0:
+                    continue;
+                    break;
+                case 1:
+                    int day;
+                    cin >> day;
+                    findByDay(day);
+                    break;
+                case 2:
+                    int mon;
+                    cin >> mon;
+                    findByMon(mon);
+                    break;
+                case 3:
+                    int year;
+                    cin >> year;
+                    findByYear(year);
+                    break;
+                case 4:
+                    int time;
+                    cin >> time;
+                    findByTime(time);
+                    break;   
+            }
+        }
     }
+
     return 0;
 }
