@@ -5,6 +5,7 @@
 #include <time.h>
 #include <chrono>
 #include <fstream>
+#define clear system("cls")
 
 using namespace std;
 
@@ -141,7 +142,7 @@ void showTime() {
             mon = "December"; break;
     }
 
-    cout << tm.hour12 << ":" << tm.min << " " << day << ", " << mon << " " << tm.day << endl;
+    cout << tm.hour12 << ":" << tm.min << " " << day << ", " << mon << " " << tm.day << endl << endl;
 }
 
 void trackLogs() {
@@ -165,59 +166,69 @@ void findByTime(int time) {
 }
 
 int main() {
-
     srand(time(0));
-    system("cls");
-    showTime();
 
     string ftype = ".json";
     string fname = "journal";
     string userThought;
 
-    cout << "\n0.exit\n1.write a thought\n2.read previous thought\n?:";
+    
     int choice;
-
     bool run = true;
     while(run) {
+        clear;
+        showTime();
+
+        cout << "0.exit\n1.write a thought\n2.read previous thought\n?:";
         cin >> choice;
 
         if(choice == 0) run = false;
         if(choice == 1) {
+            clear;
+            showTime();
+            cin.get();
             cout << getHint() << endl << ":";
             getline(cin, userThought);
 
             string file_name = "files\\" + fname + ftype;
             feelingBox( file_name, userThought);
         }
-        if(choice == 2) {
-            cout << "0.back\n1.Day\n2.Month\n3.Year\n4.Time\n?:";
-            cin >> choice;
+        if(choice == 2) { 
+            bool r = true;
+            clear;
+            while(r) {
+                showTime();
 
-            switch(choice) {
-                case 0:
-                    continue;
-                    break;
-                case 1:
-                    int day;
-                    cin >> day;
-                    findByDay(day);
-                    break;
-                case 2:
-                    int mon;
-                    cin >> mon;
-                    findByMon(mon);
-                    break;
-                case 3:
-                    int year;
-                    cin >> year;
-                    findByYear(year);
-                    break;
-                case 4:
-                    int time;
-                    cin >> time;
-                    findByTime(time);
-                    break;   
+                cout << "0.back\n1.Day\n2.Month\n3.Year\n4.Time\n?:";
+                cin >> choice;
+                switch(choice) {
+                    case 0:
+                        r = false;
+                        break;
+                    case 1:
+                        int day;
+                        cin >> day;
+                        findByDay(day);
+                        break;
+                    case 2:
+                        int mon;
+                        cin >> mon;
+                        findByMon(mon);
+                        break;
+                    case 3:
+                        int year;
+                        cin >> year;
+                        findByYear(year);
+                        break;
+                    case 4:
+                        int time;
+                        cin >> time;
+                        findByTime(time);
+                        break;   
+                }
             }
+   
+
         }
     }
 
