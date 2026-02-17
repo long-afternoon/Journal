@@ -5,16 +5,19 @@
 #include <time.h>
 #include <chrono>
 #include <fstream>
+#include "journalAnalyses.h"
 #define clear system("cls")
 
 using namespace std;
+
+
 
 struct times {
     time_t now = time(0);
     tm *ltm = localtime(&now);
 
     int hour12 = ltm->tm_hour % 12;
-    int hour2 = ltm->tm_hour;
+    int hour24 = ltm->tm_hour;
 
     int min = ltm->tm_min;
     int sec = ltm->tm_sec;
@@ -53,8 +56,6 @@ string joinJsonEntry(string pastData, string newData) {
     int pastSize = pastData.length();
     int newSize = newData.length();
 
-    
-
     pastData[pastSize - 1] = ' ';
     newData[0] = ' ';
     string newD = pastData + ',' + newData;
@@ -63,11 +64,12 @@ string joinJsonEntry(string pastData, string newData) {
 
 }
 
-void feelingBox(string fname, string thoughts) {
+void feelingBox(string fname, string thoughts, string analyse) {
 
     times tm;
     string entry =
     "[{\n"
+    "  \"analyse\": \"" + analyse + "\", \n" 
     "  \"date\": \"" + to_string(tm.year) + "-" + to_string(tm.month) + "-" + to_string(tm.day) + "\",\n"
     "  \"time\": \"" + to_string(tm.hour12) + ":" + to_string(tm.min) + ":" + to_string(tm.sec) + "\",\n"
     "  \"thought\": \"" + thoughts + "\"\n"
@@ -96,7 +98,7 @@ void feelingBox(string fname, string thoughts) {
     }
 }
 
-void showTime() {
+string showTime() {
     times tm;
     string day, mon;
     switch(tm.day7) {
@@ -141,29 +143,13 @@ void showTime() {
         case 12:
             mon = "December"; break;
     }
-
     cout << tm.hour12 << ":" << tm.min << " " << day << ", " << mon << " " << tm.day << endl << endl;
-}
 
-void trackLogs() {
-
-}
-
-void findByDay(int day) {
+    return "?" + day + "?" + mon + "?" + to_string(tm.hour24) + "?" + to_string(tm.year);
 
 }
 
-void findByMon(int mon) {
 
-}
-
-void findByYear(int year) {
-
-}
-
-void findByTime(int time) {
-
-}
 
 int main() {
     srand(time(0));
@@ -171,8 +157,10 @@ int main() {
     string ftype = ".json";
     string fname = "journal";
     string userThought;
+    string file_name = "files\\" + fname + ftype;
 
-    
+    findByDay(file_name);
+/*
     int choice;
     bool run = true;
     while(run) {
@@ -190,8 +178,7 @@ int main() {
             cout << getHint() << endl << ":";
             getline(cin, userThought);
 
-            string file_name = "files\\" + fname + ftype;
-            feelingBox( file_name, userThought);
+            feelingBox( file_name, userThought, showTime());
         }
         if(choice == 2) { 
             bool r = true;
@@ -206,7 +193,7 @@ int main() {
                         r = false;
                         break;
                     case 1:
-                        int day;
+                        string day;
                         cin >> day;
                         findByDay(day);
                         break;
@@ -231,6 +218,6 @@ int main() {
 
         }
     }
-
+*/
     return 0;
 }
