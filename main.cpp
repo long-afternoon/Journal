@@ -11,7 +11,6 @@
 using namespace std;
 
 
-
 struct times {
     time_t now = time(0);
     tm *ltm = localtime(&now);
@@ -64,11 +63,11 @@ string joinJsonEntry(string pastData, string newData) {
 
 }
 
-void feelingBox(string fname, string thoughts, string analyse) {
-
+void feelingBox(string fname, string thoughts, string analyse, int sr_no) {
     times tm;
     string entry =
     "[{\n"
+    "  \"SN\": \"" + to_string(sr_no) + "\", \n" 
     "  \"analyse\": \"" + analyse + "\", \n" 
     "  \"date\": \"" + to_string(tm.year) + "-" + to_string(tm.month) + "-" + to_string(tm.day) + "\",\n"
     "  \"time\": \"" + to_string(tm.hour12) + ":" + to_string(tm.min) + ":" + to_string(tm.sec) + "\",\n"
@@ -158,9 +157,9 @@ int main() {
     string fname = "journal";
     string userThought;
     string file_name = "files\\" + fname + ftype;
-
-    findByDay(file_name);
-/*
+    
+    // findByDay(file_name);
+// /*
     int choice;
     bool run = true;
     while(run) {
@@ -178,7 +177,7 @@ int main() {
             cout << getHint() << endl << ":";
             getline(cin, userThought);
 
-            feelingBox( file_name, userThought, showTime());
+            feelingBox( file_name, userThought, showTime(), getSrNo(file_name));
         }
         if(choice == 2) { 
             bool r = true;
@@ -188,36 +187,36 @@ int main() {
 
                 cout << "0.back\n1.Day\n2.Month\n3.Year\n4.Time\n?:";
                 cin >> choice;
-                switch(choice) {
-                    case 0:
-                        r = false;
-                        break;
-                    case 1:
-                        string day;
-                        cin >> day;
-                        findByDay(day);
-                        break;
-                    case 2:
-                        int mon;
-                        cin >> mon;
-                        findByMon(mon);
-                        break;
-                    case 3:
-                        int year;
-                        cin >> year;
-                        findByYear(year);
-                        break;
-                    case 4:
-                        int time;
-                        cin >> time;
-                        findByTime(time);
-                        break;   
-                }
+                // switch(choice) {
+                //     case 0:
+                //         r = false;
+                //         break;
+                //     case 1:
+                //         string day;
+                //         cin >> day;
+                //         findByDay(day);
+                //         break;
+                //     case 2:
+                //         int mon;
+                //         cin >> mon;
+                //         findByMon(mon);
+                //         break;
+                //     case 3:
+                //         int year;
+                //         cin >> year;
+                //         findByYear(year);
+                //         break;
+                //     case 4:
+                //         int time;
+                //         cin >> time;
+                //         findByTime(time);
+                //         break;   
+                // }
             }
    
 
         }
     }
-*/
+// */
     return 0;
 }

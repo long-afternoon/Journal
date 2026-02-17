@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 
+int getSrNo(std::string);
+
 void trackLogs();
 
 void findByDay(std::string fn);

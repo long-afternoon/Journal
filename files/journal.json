@@ -1,11 +1,19 @@
 [{
-  "analyse": "day?Tuesday,month?Feburary,time?20,year?2026", 
+  "SN": "0", 
+  "analyse": "?Tuesday?Feburary?23?2026", 
   "date": "2026-2-17",
-  "time": "8:21:19",
-  "thought": "terrible"
+  "time": "11:34:13",
+  "thought": "wassup"
 } , {
-  "analyse": "?Tuesday?Feburary?20?2026", 
+  "SN": "1", 
+  "analyse": "?Tuesday?Feburary?23?2026", 
   "date": "2026-2-17",
-  "time": "8:21:23",
-  "thought": "worst"
+  "time": "11:34:21",
+  "thought": "huhhh"
+} , {
+  "SN": "2", 
+  "analyse": "?Tuesday?Feburary?23?2026", 
+  "date": "2026-2-17",
+  "time": "11:34:28",
+  "thought": "i see"
 }]
