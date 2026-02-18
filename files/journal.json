@@ -1,19 +1,13 @@
 [{
   "SN": "0", 
-  "analyse": "?Tuesday?Feburary?23?2026", 
-  "date": "2026-2-17",
-  "time": "11:34:13",
-  "thought": "wassup"
+  "analyse": "day?Wednesday,month?Feburary,hour?19,year?2026", 
+  "date": "2026-2-18",
+  "time": "7:27:24",
+  "thought": "heyyy?"
 } , {
   "SN": "1", 
-  "analyse": "?Tuesday?Feburary?23?2026", 
-  "date": "2026-2-17",
-  "time": "11:34:21",
-  "thought": "huhhh"
-} , {
-  "SN": "2", 
-  "analyse": "?Tuesday?Feburary?23?2026", 
-  "date": "2026-2-17",
-  "time": "11:34:28",
-  "thought": "i see"
+  "analyse": "day?Wednesday,month?Feburary,hour?19,year?2026", 
+  "date": "2026-2-18",
+  "time": "7:27:33",
+  "thought": "hello?"
 }]

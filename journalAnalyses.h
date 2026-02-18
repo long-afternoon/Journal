@@ -5,7 +5,7 @@ int getSrNo(std::string);
 
 void trackLogs();
 
-void findByDay(std::string fn);
+void findByDay(std::string fn, std::string target);
 
 void findByMon(int mon);
 
